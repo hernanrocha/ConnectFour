@@ -3,7 +3,7 @@ using System.Collections;
 
 public class column : MonoBehaviour {
 
-	//public ConnectFour game;
+	public Board game;
 	public int id;
 
 	// Use this for initialization
@@ -19,6 +19,6 @@ public class column : MonoBehaviour {
 	private void OnMouseDown(){
 		// Colocar ficha en la columna
 		Debug.Log ("Colocar ficha en columna " + id);
-		//game.addTween (id);
+		game.addFicha (id);
 	}
 }
