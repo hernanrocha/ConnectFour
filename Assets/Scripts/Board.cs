@@ -10,6 +10,8 @@ public class Board : MonoBehaviour {
 	private int[,] board;
 	
 	private int currentPlayer; // 1 = BLUE, 2 = RED
+	private int gameState = -1; // -1 en juego, 0 empate, 1 ganador azul, 2 ganador rojo
+	private int fichas; // Cantidad de fichas colocadas (para determinar empate)
 
 	// Use this for initialization
 	void Start () {
@@ -21,11 +23,19 @@ public class Board : MonoBehaviour {
 		
 		Debug.Log ("[GAME] Comienza jugador Azul");
 		currentPlayer = 1;
+
+		gameState = -1;
+
+		fichas = 0;
 	}
 	
 	// Update is called once per frame
 	void Update () {
 	
+	}
+
+	public int getGameState(){
+		return gameState;
 	}
 
 	public void addFicha(int col){
@@ -45,8 +55,19 @@ public class Board : MonoBehaviour {
 				    togglePlayer();
 				}else if (currentPlayer == 1){
 					Debug.Log("Ganador Azul");
+					gameState = 1;
+					return;
 				}else{
 					Debug.Log("Ganador Rojo");
+					gameState = 2;
+					return;
+				}
+
+				fichas++;
+				if (fichas == rows * columns){
+					Debug.Log("Hubo un empate");
+					gameState = 0;
+					return;
 				}
 
 				return;
