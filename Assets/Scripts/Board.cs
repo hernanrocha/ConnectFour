@@ -3,6 +3,9 @@ using System.Collections;
 
 public class Board : MonoBehaviour {
 
+	public Transform blue;
+	public Transform red;
+
 	private int rows, columns;
 	private int[,] board;
 	
@@ -30,16 +33,27 @@ public class Board : MonoBehaviour {
 			if (board[row, col] == 0){
 				Debug.Log ("[GAME] Colocar ficha en posicion [" + row + ", " + col + "]");
 				board[row, col] = currentPlayer;
-				
+
+				if (currentPlayer == 1){
+					Instantiate (blue, new Vector3 (col - 3, 3.5f, 0), Quaternion.identity);
+				} else {
+					Instantiate (red, new Vector3 (col - 3, 3.5f, 0), Quaternion.identity);
+				}
+
 				//placeChip(new Point(row,columnclicked))
 				togglePlayer();
-				//putChipReady();
+
+
 				return;
 			}
 		}
 		
 		Debug.Log ("[GAME] Columna llena");
 	}
+
+	//private void putChip(int col){
+	//	Instantiate (blue, new Vector3 (-3, 2, 0), Quaternion.identity);
+	//}
 	
 	private void togglePlayer(){
 		if (currentPlayer == 1) {
