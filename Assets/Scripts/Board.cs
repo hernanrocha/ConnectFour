@@ -41,8 +41,13 @@ public class Board : MonoBehaviour {
 				}
 
 				//placeChip(new Point(row,columnclicked))
-				togglePlayer();
-
+				if (!fourInALine(row, col)){
+				    togglePlayer();
+				}else if (currentPlayer == 1){
+					Debug.Log("Ganador Azul");
+				}else{
+					Debug.Log("Ganador Rojo");
+				}
 
 				return;
 			}
