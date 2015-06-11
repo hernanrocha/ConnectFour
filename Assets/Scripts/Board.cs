@@ -15,6 +15,10 @@ public class Board : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		initDefault ();
+	}
+
+	public void initDefault(){
 		Debug.Log ("Iniciar tablero");
 		
 		rows = 6;
@@ -23,12 +27,13 @@ public class Board : MonoBehaviour {
 		
 		Debug.Log ("[GAME] Comienza jugador Azul");
 		currentPlayer = 1;
-
+		
 		gameState = -1;
-
+		
 		fichas = 0;
 	}
-	
+
+
 	// Update is called once per frame
 	void Update () {
 	
