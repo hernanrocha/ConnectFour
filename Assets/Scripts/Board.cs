@@ -8,17 +8,13 @@ public class Board : MonoBehaviour {
 
 	private int rows, columns;
 	private int[,] board;
-	
+
 	private int currentPlayer; // 1 = BLUE, 2 = RED
 	private int gameState = -1; // -1 en juego, 0 empate, 1 ganador azul, 2 ganador rojo
 	private int fichas; // Cantidad de fichas colocadas (para determinar empate)
 
 	// Use this for initialization
-	void Start () {
-		initDefault ();
-	}
-
-	public void initDefault(){
+	public void Start () {
 		Debug.Log ("Iniciar tablero");
 		
 		rows = 6;
@@ -33,17 +29,21 @@ public class Board : MonoBehaviour {
 		fichas = 0;
 	}
 
-
 	// Update is called once per frame
 	void Update () {
 	
 	}
 
+	// EL-6
+	// EL-7
 	public int getGameState(){
 		return gameState;
 	}
 
 	public void addFicha(int col){
+		if (getGameState () != -1)
+			return;
+
 		for(int row = rows - 1; row >= 0; row--){		
 			if (board[row, col] == 0){
 				Debug.Log ("[GAME] Colocar ficha en posicion [" + row + ", " + col + "]");

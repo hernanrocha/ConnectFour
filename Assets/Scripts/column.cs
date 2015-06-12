@@ -18,7 +18,6 @@ public class column : MonoBehaviour {
 
 	private void OnMouseDown(){
 		// Colocar ficha en la columna
-		Debug.Log ("Colocar ficha en columna " + id);
 		game.addFicha (id);
 	}
 }
